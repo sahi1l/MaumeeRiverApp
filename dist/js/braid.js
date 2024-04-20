@@ -12,7 +12,7 @@ function DEBUG(text) {
 }
 let $root;
 
-let Preferences = new class {
+let Prefs = new class {
     constructor() {
         this.left = false;
         this.auto = false;
@@ -20,15 +20,25 @@ let Preferences = new class {
         this.load();
         this.name = "maumee";
     }
-    load() {
-        let num = Cookies.get("maumee")??1;
+    async load() {
+        let num;
+        if(Preferences) {
+            num = await Preferences.get({key:"cookie"});
+        } else {
+            num=Cookies.get(this.name);
+        }
+        if(num===undefined) {num=1;} else {num=Number(num);}
         this.left = Boolean(num&4);
         this.auto = Boolean(num&2);
         this.rules = Boolean(num&1);
     }
     save() {
         let code = (this.left<<2) + (this.auto<<1) + (this.rules<<0);
-        Cookies.set(this.name,code);
+        if(Preferences) {
+            Preferences.set({key:"cookie", value:code});
+        } else {
+            Cookies.set(this.name,code);
+        }
     }
     toggle(which) {
         this[which] = !this[which];
@@ -539,7 +549,7 @@ class Braid extends Pile {
         else {x=3.5+0.04*(i-17);                y=i-14;  align="top";}
         let braidbox = $("#braid")[0].getBoundingClientRect();
         let X = (braidbox.left + x * 0.20*braidbox.width);
-/*        if (Preferences.left) {
+/*        if (Prefs.left) {
             X = braidbox.right - x * 0.20*braidbox.width;
         }*/
         let L = [
@@ -582,7 +592,7 @@ class DragOut extends Pile {
     }
 }
 function AutoPlay(always,after) {
-    if (Preferences.auto || always) {
+    if (Prefs.auto || always) {
         if(after) {
             setTimeout(GetAvailable,200);
         } else {
@@ -967,7 +977,7 @@ function Restart() {
     Setup(cards);
 }
 function Reverse() {
-    $("body").toggleClass("reverse",Preferences.left);
+    $("body").toggleClass("reverse",Prefs.left);
     adjustPositions();
 }
 function init() {
@@ -1024,8 +1034,8 @@ function init() {
         AutoPlay("always",false);
     });//UI
     $avail.on("dblclick",(e)=>{
-        Preferences.toggle("auto");
-        $("#available").toggleClass("automatic",Preferences.auto);
+        Prefs.toggle("auto");
+        $("#available").toggleClass("automatic",Prefs.auto);
         
     });
     let $undo = $("#undo").on("click",(e)=>{Interact();Undo.undo(e)});
@@ -1034,19 +1044,19 @@ function init() {
     $("#win").on("click",()=>NewGame);
     let $restart = $("#restart").on("click",AskRestart);
     let $reverse = $("#reverse").on("click",(e) => {
-        Preferences.toggle("left"); Reverse();
+        Prefs.toggle("left"); Reverse();
     });
     IsDone();
     $("#help").on("click",()=>{$("#popup").toggle();});
     $("#popup").on("click",()=>{$("#popup").toggle();});
-    if(Preferences.rules) {
+    if(Prefs.rules) {
         $("#popup").show();
-        Preferences.toggle("rules");
+        Prefs.toggle("rules");
     }
-    $("#available").toggleClass("automatic",Preferences.auto);
+    $("#available").toggleClass("automatic",Prefs.auto);
     AutoPlay(false,"wait");
-    if(Preferences.left) {Reverse();}
-    $("body").toggleClass("left",Preferences.left);
+    if(Prefs.left) {Reverse();}
+    $("body").toggleClass("left",Prefs.left);
     console.log("=====READY=====");
     
 }
