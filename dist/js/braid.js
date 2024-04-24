@@ -1,5 +1,3 @@
-//let Preferences=undefined;
-import {Preferences} from "./@capacitor/preferences/dist/plugin.js";
 import autoBind from "./autobind.js";
 let ranks = {
     default: -1, //output only
@@ -24,11 +22,7 @@ let Prefs = new class {
     }
     async load() {
         let num;
-        if(Preferences) {
-            num = await Preferences.get({key:"cookie"});
-        } else {
-            num=Cookies.get(this.name);
-        }
+        num=Cookies.get(this.name);
         if(num===undefined) {num=1;} else {num=Number(num);}
         this.left = Boolean(num&4);
         this.auto = Boolean(num&2);
@@ -36,11 +30,7 @@ let Prefs = new class {
     }
     save() {
         let code = (this.left<<2) + (this.auto<<1) + (this.rules<<0);
-        if(Preferences) {
-            Preferences.set({key:"cookie", value:code});
-        } else {
-            Cookies.set(this.name,code);
-        }
+        Cookies.set(this.name,code);
     }
     toggle(which) {
         this[which] = !this[which];
@@ -1030,9 +1020,6 @@ function init() {
     //DEAL CARDS----------------------------------------
     let cards = makedeck($root);
     Setup(cards);
-    //DEBUG: Check if Preferences is defined or not
-//    if(Preferences===undefined) {$("#canvas").css({"background-color":"blue"});} else {
-//        $("#canvas").css({"background-color":"cyan"});}
     //BUTTONS--------------------
     let $avail = $("#available").on("click",(e)=>{
         Interact();
