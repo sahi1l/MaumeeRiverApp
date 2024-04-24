@@ -1,3 +1,5 @@
+//let Preferences=undefined;
+import {Preferences} from "./@capacitor/preferences/dist/plugin.js";
 import autoBind from "./autobind.js";
 let ranks = {
     default: -1, //output only
@@ -1028,6 +1030,9 @@ function init() {
     //DEAL CARDS----------------------------------------
     let cards = makedeck($root);
     Setup(cards);
+    //DEBUG: Check if Preferences is defined or not
+//    if(Preferences===undefined) {$("#canvas").css({"background-color":"blue"});} else {
+//        $("#canvas").css({"background-color":"cyan"});}
     //BUTTONS--------------------
     let $avail = $("#available").on("click",(e)=>{
         Interact();

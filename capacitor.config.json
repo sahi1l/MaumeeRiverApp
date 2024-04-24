@@ -1,6 +1,7 @@
 {
   "appId": "us.sahill.maumee",
-  "appName": "Maumee River Solitaire",
+    "appName": "Maumee River Solitaire",
+     "bundledWebRuntime": false,
   "webDir": "dist",
   "plugins": {
     "SplashScreen": {
