@@ -360,7 +360,7 @@ class Pile {
     pos(i) {
         //position of the ith card in the pile, extensible for Braid
         let R = this.$w[0].getBoundingClientRect();
-        let margin = parseFloat($(this.$w[0]).css("margin-left"));
+        let margin =0; //0*parseFloat($(this.$w[0]).css("margin-left"));
         return [R.left-margin,R.top-margin];
     }
     update() {

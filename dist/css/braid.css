@@ -3,8 +3,11 @@
     src: local("Diphylleia"), url("../assets/Diphylleia-Regular.ttf");
 }
 
-:root {--cardwidth: 12vw;
-       --cardheight: 9vh;
+:root {--cardwidth: 12dvw;
+       --cardheight: 9dvh;
+       --cardfontsize: min(calc(0.46 * var(--cardwidth)), calc(0.8*var(--cardheight)));
+       --sidewidth: calc( 2.5*var(--cardwidth) );
+       --mainwidth: calc(100dvw - var(--sidewidth) - 20px);
        --btnsize: 10vmin;
        --cardcolor: white;
        --bgcolor: green;
@@ -14,10 +17,9 @@
       }
 
 
-
 html,body {
     margin: 0px;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden;
 }    
 #canvas {
@@ -25,24 +27,28 @@ html,body {
     display: flex;
     flex-direction: row;
     align-items: start;
-    width: 100vw;
-    height: 100vh;
+    justify-content: space-evenly;
+    width: 100dvw;
+    height: 100dvh;
     aspect-ratio: 1;
     z-index: -1;
 }
 body.reverse #canvas {
     flex-direction:row-reverse;
 }
-#left,#right {
+
+#mainpanel,#sidepanel {
     display:inline-block;
     position: relative;
     margin: 0px 10px;
 }
+
+
 /*LEFT========================================*/
-#left {
+#mainpanel {
     display: grid;
     grid-template-rows: 60vh 15vh 25vh;
-    width: 68.75vw;
+    width: var(--mainwidth);
 }
 #braid {
     grid-row: 1;
@@ -53,6 +59,7 @@ body.reverse #canvas {
     display: grid;
     justify-content: space-evenly;
     position: relative;
+    gap: 3px;
 }
 #free {
     grid-row: 3;
@@ -68,6 +75,7 @@ body.reverse #canvas {
     grid-template-rows: 1fr;
     left: 0px;
     margin-bottom: 5vh;
+    width: 100%;
     background: url("../assets/img/dockbg.png");
     background-size: cover;
 }
@@ -84,9 +92,9 @@ body.reverse #canvas {
 #free .label {top: 100%;}
 
 /*RIGHT========================================*/
-#right {
+#sidepanel {
     margin-left: 0.5vw;
-    width: 28vw;
+    width: var(--sidewidth);
     display: flex;
     flex-direction: column;
 }
@@ -109,7 +117,7 @@ body.reverse #canvas {
     grid-column-gap: 1ex;
     border-top: 3px solid white;
     margin-top: 5px;
-    margin-left: 6vw;
+/*    margin-left: 6vw;*/
     padding-top: 5px;
     
 }
@@ -137,7 +145,6 @@ body.reverse #canvas {
     color: white;
     justify-self: start;
     align-self: center;
-    padding-left: 1ex;
     text-align: left;
     cursor: pointer;
 }
@@ -163,7 +170,7 @@ body.reverse #canvas {
 #talonbox>.pile {grid-column: 2;}
 
 #available {
-    --size: 16vmin;
+    --size: 16dvmin;
     grid-column: 1;
     grid-row: 1/3;
     display: inline-block;
@@ -391,10 +398,9 @@ body.reverse #canvas {
     position: absolute;
     width: var(--cardwidth);/*10vmin;*/
     height: var(--cardheight); /*6.67vmin;*/
-    margin: 3px;
     text-align: center;
     user-select: none;
-    font-size: 6.5vmin; /*5.33vmin;*/
+    font-size: var(--cardfontsize); /*5.33vmin;*/
 }
 .card {
     background-color: white;
@@ -420,13 +426,14 @@ body.reverse #canvas {
 #talonbox .pile,
 #free .card,
 #free .pile,
-#dock .card,
 #dock .pile,
 #foundations .card,
 #foundations .pile 
 {
+    margin: 0px;
     position: relative;
 }
+
 
 .overlay {
     width: 100%;
