@@ -17,10 +17,10 @@ let Prefs = new class {
         this.left = false;
         this.auto = false;
         this.rules = true;
-        this.load();
         this.name = "maumee";
+        this.load();
     }
-    async load() {
+    load() {
         let num;
         num=Cookies.get(this.name);
         if(num===undefined) {num=1;} else {num=Number(num);}
@@ -509,7 +509,6 @@ class Braid extends Pile {
         return this.pos(i)[2];
     }
     restock() {
-        console.debug(">restock");
         let moved = false;
         for (let pile of docks) {
             if (this.empty()) {break;}
@@ -519,7 +518,6 @@ class Braid extends Pile {
             }
         }
         if(moved) {AutoPlay(false,true);}
-        console.debug("restock");
     }
     flow() {
         let N = this.stack.length;

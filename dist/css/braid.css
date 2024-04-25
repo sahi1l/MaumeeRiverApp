@@ -70,6 +70,7 @@ body.reverse #canvas {
 }
 
 #dock {
+    align-items: center;
     grid-row: 2;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: 1fr;
@@ -119,6 +120,7 @@ body.reverse #canvas {
     margin-top: 5px;
 /*    margin-left: 6vw;*/
     padding-top: 5px;
+    gap: 5px;
     
 }
 .talon>.overlay
@@ -182,7 +184,6 @@ body.reverse #canvas {
     height: var(--size);
     border: 2px solid transparent;
     position: relative;
-    margin: 
 
     &::before {
         position: absolute;
@@ -257,6 +258,7 @@ body.reverse #canvas {
     justify-content: center;
     align-items: center;
     font-family: Diphylleia,serif;
+    box-sizing: border-box;
 }
 .card.root {
     background-color: antiquewhite;
@@ -264,12 +266,13 @@ body.reverse #canvas {
 .card.braidcard {
     display: flex;
     justify-content: center;
+    padding:2px;
 }
 .card.braidcard.aligntop {
-    align-items: start;
+    /*align-items: start;*/
 }
 .card.braidcard.alignbottom {
-    align-items: end;
+    /*align-items: end;*/
 }
 .braidbg,.targetbg {
     width: 100%;
@@ -401,6 +404,7 @@ body.reverse #canvas {
     text-align: center;
     user-select: none;
     font-size: var(--cardfontsize); /*5.33vmin;*/
+    box-sizing: border-box;
 }
 .card {
     background-color: white;

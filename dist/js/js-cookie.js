@@ -7,13 +7,10 @@
  */
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
-        console.debug("A");
 	define(factory);
     } else if (typeof exports === 'object') {
-        console.debug("B");
 	module.exports = factory();
     } else {
-        console.debug("C");
 	var _OldCookies = window.Cookies;
 	var api = window.Cookies = factory();
 	api.noConflict = function () {
