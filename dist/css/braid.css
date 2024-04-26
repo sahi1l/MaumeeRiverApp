@@ -509,46 +509,12 @@ body.reverse #logo {
     width: 40vw;
     max-height: 80vh;
     font-size: 3vmin;
-    color: black;
-    background-color: white;
-    text-align: left;
     opacity: 1;
     z-index: 9999;
     display: none;
     padding: 3vmin;
     margin: 0px;
     overflow-y: scroll;
-}
-#popup .safe {
-    margin: 0px;
-    font-size: 75%;
-    display: inline;
-}
-#popup .continue {
-    text-align: center;
-    cursor: pointer;
-    margin: 5px;
-    font-weight: bold;
-}
-#popup section#help-interface img {
-    height: 4ex;
-    vertical-align: top;
-    margin-inline: 0.1rem;
-}
-#popup>h2 {
-    margin: 0px;
-    text-align: center;
-}
-#popup section {
-    dfn {font-weight: bold;}
-    ul, dl, dd {
-        margin: 2px;
-        padding: 0px;
-    }
-    dt {font-weight: bold;}
-}
-#popup #help-highlighting img {
-    height: 8ex;
 }
 /*DIALOG BOX*/
 dialog {
