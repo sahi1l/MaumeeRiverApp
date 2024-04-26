@@ -484,7 +484,7 @@ body.reverse #talonbox {
 
 
 /*RULES===================================*/
-#rules {
+#logo {
     --size: max(calc(2*var(--cardheight)),
                 calc(2*var(--cardwidth))); /*min(200vmin,40vw)*/
     width: var(--size);
@@ -497,7 +497,7 @@ body.reverse #talonbox {
     aspect-ratio: 2;
     z-index: 0;
 }
-body.reverse #rules {
+body.reverse #logo {
     left: 33vw;
 }
 
@@ -530,16 +530,25 @@ body.reverse #rules {
     margin: 5px;
     font-weight: bold;
 }
-#popup img {
-    width: 3vmin;
+#popup section#help-interface img {
+    height: 4ex;
+    vertical-align: top;
+    margin-inline: 0.1rem;
 }
 #popup>h2 {
     margin: 0px;
     text-align: center;
 }
-#popup>ul {
-    margin: 2px;
-    padding: 0px;
+#popup section {
+    dfn {font-weight: bold;}
+    ul, dl, dd {
+        margin: 2px;
+        padding: 0px;
+    }
+    dt {font-weight: bold;}
+}
+#popup #help-highlighting img {
+    height: 8ex;
 }
 /*DIALOG BOX*/
 dialog {
