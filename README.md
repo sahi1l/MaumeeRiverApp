@@ -11,13 +11,6 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 - An older version of the game can be found <A HREF="https://sahi1l.github.io/MaumeeRiverSolitaire/">on Github Pages</A>.
 - If you make any changes, you can regenerate the APK by typing `npm run apk`.
 
-## Screenshots
-<table><tr>
-<td><img src="dist/assets/help/portrait.png">Game in left-handed portrait orientation.</td>
-<td><img src="dist/assets/help/landscape.png">Game in right-handed landscape orientation.  (The cards are horizontal to make it easier to grab them.)</td></td>
-</tr>
-</table>
-
 ## Rules
 - Played with two standard 52-card decks.
 - **Goal:** Build up the eight wrap-around *foundations* by suit.  You can play a card to the foundation by clicking on it or dragging it to the appropriate spot. The player may choose to build the foundations upward or downward starting from the *base card*; a blue arrow appears once the direction has been decided. 
@@ -26,6 +19,13 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 - Below the docks are eight *free* spaces, which can be played to the foundation.  Players can move a card from the discard to any empty free space.
 - Players can click on the *deck* to reveal one card at a time in the discard.  The deck can be played through as many times as desired; the number on top of the deck shows the number of times it has been played through. White numbers to the right of the deck and discard piles show how many cards are in each.
         
+## Screenshots
+<table><tr>
+<td><img src="dist/assets/help/portrait.png">Game in left-handed portrait orientation.</td>
+<td><img src="dist/assets/help/landscape.png">Game in right-handed landscape orientation.  (The cards are horizontal to make it easier to grab them.)</td></td>
+</tr>
+</table>
+
 ## Interface
 <table>
 <tr>
@@ -57,8 +57,7 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 </tr>
 </table>
 
-## Card Highlighting
-  <table>
+<table>
     <tr>
       <td><img src="dist/assets/help/root.png"></td>
       <td>All base cards are tinted a light brown.</td>
