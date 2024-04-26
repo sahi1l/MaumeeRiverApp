@@ -1,6 +1,6 @@
 # Maumee River Solitaire
 ## About the Game
-Maumee River Solitaire is based on the card game <A HREF="https://en.wikipedia.org/wiki/Herring-Bone_(card_game)">Herringbone</A>. It is named after the Maumee River in Ohio, which flows through Toledo, Ohio where I live.  Features of this version include a compact layout that changes the card size to maximize playability on any screen, an autoplay feature, and highlighting of root and duplicate cards in the river
+Maumee River Solitaire is based on the card game <A HREF="https://en.wikipedia.org/wiki/Herring-Bone_(card_game)">Herringbone</A>. It is named after the <A HREF="https://en.wikipedia.org/wiki/Maumee_River">Maumee River</A> in Ohio, where I live (because just plain old "River Solitaire" is something else).  Features of this version include a compact layout that changes the card size to maximize playability on any screen, an autoplay feature, and highlighting of root and duplicate cards in the river
 
 This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previously written <A HREF="https://github.com/sahi1l/MaumeeRiverSolitaire">web app I wrote</A> for mobile use.  The game itself is written in Javascript and CSS.
 
