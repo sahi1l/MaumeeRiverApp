@@ -56,6 +56,7 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 <td>Starts a new game.</td>
 </tr>
 </table>
+
 ## Card Highlighting
   <table>
     <tr>
