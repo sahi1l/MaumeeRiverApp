@@ -5,11 +5,10 @@ Maumee River Solitaire is based on the card game <A HREF="https://en.wikipedia.o
 This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previously written <A HREF="https://github.com/sahi1l/MaumeeRiverSolitaire">web app I wrote</A> for mobile use.  The game itself is written in Javascript and CSS.
 
 ## How to Play
-- Download the code, and run the command `npm run preview`
-- Sideload `maumee.apk` to your Android device.
-- The HTML, javascript, and CSS are in the `dist/` folder, and can run by pointing a web browser at `dist/index.html`.
-- An older version of the game can be found <A HREF="https://sahi1l.github.io/MaumeeRiverSolitaire/">on Github Pages</A>.
-- If you make any changes, you can regenerate the APK by typing `npm run apk`.
+- **Easiest**: Visit the <A HREF="https://sahi1l.codeberg.page/maumee/">online version</A> on Codeberg.
+- Download `maumee.apk` above and sideload it to your Android device. (If you tweak the code, you can regenerate the APK by typing `npm run apk`.)
+- Download the code, and run the command `npm run preview`  (You will need to have NodeJS installed.)
+- Point a web browser at the folder `dist/index.html`, which contains the complete HTML, javascript, and CSS code.
 
 ## Rules
 - Played with two standard 52-card decks.
