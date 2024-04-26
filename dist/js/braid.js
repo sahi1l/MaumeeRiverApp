@@ -57,8 +57,8 @@ let suits = {"H":"&#9829;",//&hearts;",
              "S":"&#9824;",//&spades;",
              "C":"C",//&clubs;"
 };
-const getSuit = (suit)=>{
-    return `<img class="suit" src="assets/suits/${suit}.png">`;
+const getSuit = (suit,white=false)=>{
+    return `<img class="suit" src="assets/suits/${suit}${white?"W":""}.png">`;
     return suits[suit];
 //    return '<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">'+suits[suit]+"</svg>";
 }
@@ -766,6 +766,14 @@ function GetDirection() {
 function SetDirection() {
     let dir = GetDirection();
     foundation.direction = dir;
+/*    let content="";
+    if(dir>0){
+        content="▲";
+    } else if (dir<0) {
+        content="▼";
+    }
+    foundation.$arrow.html(content);
+    */
     foundation.$arrow
         .toggleClass("up",dir>0)
         .toggleClass("down",dir<0);
@@ -777,7 +785,7 @@ class Foundation extends DragIn {
         this.rank = ranks.foundation; 
         this.$w.addClass("foundation");
         this.$display = $("<span>").appendTo(this.$w);
-        this.$display.html(start+getSuit(suit));
+        this.$display.html(start+getSuit(suit,true));
         this.suit = suit;
         this.start = start;
         this.$overlay.on("mousedown",this.highlightNext);
@@ -793,7 +801,7 @@ class Foundation extends DragIn {
         $(".card").removeClass("root");
         if (start) {
             this.start = start;
-            this.$display.html(this.start+getSuit(this.suit));
+            this.$display.html(this.start+getSuit(this.suit,true));
             for(let suit of Object.keys(suits)) {
                 $(`.card${this.start}${suit}`).addClass("root");
             }
