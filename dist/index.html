@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<script type="module" crossorigin src="/assets/index.40a86476.js"></script>
+<link rel="stylesheet" href="/assets/index.ad5e7c12.css">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maumee River Solitaire</title>
-  <script type=module src="js/jquery.js"></script>
-  <script type=module src="js/js-cookie.js"></script>
-<script type="module" src="js/braid.js"></script>
-<link rel="icon" href="assets/icons/icon.png">
+  
+  
+
+<link rel="icon" href="../assets/icons/icon.png">
 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />-->
-<link rel="stylesheet" href="css/braid.css">
-<link rel="stylesheet" href="css/rules.css">
+
+
 <main id="canvas">
   
   <div id="mainpanel">
     <div id="braid">
-      <img src="assets/img/braidback.png" class="braidbg" alt="">
+      <img src="/assets/braidback.cac25915.png" class="braidbg" alt="">
     </div>
     <div id="dock" title="Empty spaces on the dock are filled from the river. When the river is empty, these become free space.">
       <div class="label">Docks</div>
@@ -31,7 +34,7 @@
     <div id="foundations">
       <!--      <div class="label">Foundations</div>-->
       <div id="directionbox">
-        <img id="direction" src="assets/icons/direction.png" title="Points the direction the foundations are building in" alt="Direction indicator">
+        <img id="direction" src="/assets/direction.5369894e.png" title="Points the direction the foundations are building in" alt="Direction indicator">
       </div>
     </div>
     
@@ -78,36 +81,36 @@
   <section id="help-interface">
     <h2>Interface</h2>
     <dl>
-      <dt>Autoplay <img src="assets/icons/available.png" alt="Autoplay">
+      <dt>Autoplay <img src="/assets/available.9f632396.png" alt="Autoplay">
 </dt>
         <dd>This button makes all safe* moves to the foundation; other cards that could be moved to the foundation are highlighted, as is the button.  Double-clicking on the button makes this run automatically every time a card is drawn.
           <p class="safe">*A card is <i>safe</i> to move if its duplicate isn't in the river or on the docks.</p>
         </dd>
-      <dt>Undo/Redo<img src="assets/icons/undo.png" alt="Undo">
-        <img src="assets/icons/redo.png" alt="Redo">
+      <dt>Undo/Redo<img src="/assets/undo.ef23d564.png" alt="Undo">
+        <img src="/assets/redo.ae4d1286.png" alt="Redo">
       </dt>
       <dd>Unlimited undo and redo.</dd>
-      <dt><B>Flip Layout</B><img src="assets/icons/reverse.png" alt="Flip layout"></dt>
+      <dt><B>Flip Layout</B><img src="/assets/reverse.1e510fee.png" alt="Flip layout"></dt>
       <dd>Switches between a left-handed and right-handed layout.  This setting is remembered from session to session via a cookie.</dd>
-      <dt>Restart <img src="assets/icons/restart.png" alt="Restart"></dt>
+      <dt>Restart <img src="/assets/restart.ecf3caa5.png" alt="Restart"></dt>
       <dd>Restart the current game.  This cannot be undone.</dd>
-      <dt>New Game <img src="assets/icons/newgame.png" alt="New Game"></dt>
+      <dt>New Game <img src="/assets/newgame.ebb58120.png" alt="New Game"></dt>
       <dd>Starts a new game.</dd>
-</UL>
+</DL>
 </section>
 <section id="help-highlighting">
   <h2>Card Highlighting</h2>
   <table>
     <tr>
-      <td><img src="assets/help/root.png"></td>
+      <td><img src="/assets/root.80f690b5.png"></td>
       <td>All base cards are tinted a light brown.</td>
     </tr>
     <tr>
-      <td><img src="assets/help/duplicate.png"></td>
+      <td><img src="/assets/duplicate.02c591b2.png"></td>
       <td>Cards in the river or on the docks with a gold border have a duplicate in the river.</td>
     </tr>
     <tr>
-      <td><img src="assets/help/highlighted.png"></td>
+      <td><img src="/assets/highlighted.c629fa33.png"></td>
       <td>In autoplay mode, cards with a purple border <i>can</i> be played onto the foundations, but weren't played automatically because there might be a better move.</td>
     </tr>
   </table>
@@ -116,8 +119,8 @@
   <div class="continue">Click here to continue.</div>
 </div>
 
-<img src="assets/img/win.png" id="win" alt="Win!">
+<img src="/assets/win.6bb67681.png" id="win" alt="Win!">
 <!--<div id="rules">-->
-  <img id="logo" src="assets/img/title.png" title="Maumee River Solitaire" alt="Maumee River Solitaire logo">
+  <img id="logo" src="/assets/title.cd218b36.png" title="Maumee River Solitaire" alt="Maumee River Solitaire logo">
 <!--</div rules>-->
 </html>

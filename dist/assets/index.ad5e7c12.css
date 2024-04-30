@@ -1,0 +1,591 @@
+@font-face {
+    font-family: "Diphylleia";
+    src: local("Diphylleia"), url("/assets/Diphylleia-Regular.7027babd.ttf");
+}
+
+:root {--cardwidth: 12dvw;
+       --cardheight: 9dvh;
+       --cardfontsize: min(calc(0.46 * var(--cardwidth)), calc(0.8*var(--cardheight)));
+       --sidewidth: calc( 2.5*var(--cardwidth) );
+       --mainwidth: calc(100dvw - var(--sidewidth) - 20px);
+       --btnsize: 10vmin;
+       --cardcolor: white;
+       --bgcolor: green;
+       --highlightcolor: #808;
+       --highlightinvert: #8F8;
+       --duplicateColor: orange; /*border color for cards duplicated in the braid*/
+      }
+
+
+html,body {
+    margin: 0px;
+    height: 100dvh;
+    overflow: hidden;
+}    
+#canvas {
+    background-color: var(--bgcolor);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+    width: 100dvw;
+    height: 100dvh;
+    aspect-ratio: 1;
+}
+body.reverse #canvas {
+    flex-direction:row-reverse;
+}
+
+#mainpanel,#sidepanel {
+    display:inline-block;
+    position: relative;
+    margin: 0px 10px;
+}
+
+
+/*LEFT========================================*/
+#mainpanel {
+    display: grid;
+    grid-template-rows: 60vh 15vh 25vh;
+    width: var(--mainwidth);
+}
+#braid {
+    grid-row: 1;
+    width: 100%;
+    height: 60vh;
+}
+#free,#dock {
+    display: grid;
+    justify-content: space-evenly;
+    position: relative;
+    gap: 3px;
+}
+#free {
+    grid-row: 3;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr 1fr;
+    position: absolute;
+    width: 80%;
+}
+
+#dock {
+    align-items: center;
+    grid-row: 2;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: 1fr;
+    left: 0px;
+    margin-bottom: 5vh;
+    width: 100%;
+    background: url("/assets/dockbg.8c1e3ff2.png");
+    background-size: cover;
+}
+.label {
+    position:absolute;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    font-family: sans-serif;
+    font-size: 5vmin;
+    color: rgba(255,255,255,0.5);
+}
+#dock .label {bottom: 100%;}
+#free .label {top: 100%;}
+
+/*RIGHT========================================*/
+#sidepanel {
+    margin-left: 0.5vw;
+    width: var(--sidewidth);
+    display: flex;
+    flex-direction: column;
+}
+
+/*MID----------------------------------------*/
+/*#mid {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-top: 7vh;
+}
+*/
+#talonbox {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    grid-template-columns: 14vw var(--cardwidth) 3ex;
+    grid-template-rows: 1fr 1fr 2ex;
+    grid-column-gap: 1ex;
+    margin-top: 5px;
+/*    margin-left: 6vw;*/
+    gap: 5px;
+    -webkit-tap-highlight-color: transparent; /*prevent distracting blue highlight*/
+}
+body.reverse #talonbox {
+    left: 15px;
+}
+.talon>.overlay
+{
+    background: url("/assets/cardback.0885ec84.png");
+    background-size: cover;
+    color: white;
+    overflow: clip;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    z-index:2000;
+}
+.talon > .overlay.empty {
+    opacity: 0.1;
+/*    background: rgba(255,255,255,0.2);*/
+    outline: 2px white;
+}
+.talon > .overlay > span {
+    font-size: 8vmin;
+    color: rgba(255,255,255,0.5);
+}
+.count {
+    color: white;
+    justify-self: start;
+    align-self: center;
+    text-align: left;
+    cursor: pointer;
+}
+#taloncount {
+    grid-column: 3;
+    grid-row: 2;
+}
+#discardcount {
+    grid-column: 3;
+    grid-row: 1;
+}
+#flipcount {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+}
+#flipcount::before {
+    content: "Flips: ";
+}
+#flipcount:empty {
+    display: none;
+}
+#talonbox>.pile {grid-column: 2;}
+.talon.pile {outline: transparent;}
+#available {
+    --size: 16dvmin;
+    grid-column: 1;
+    grid-row: 1/3;
+    display: inline-block;
+    align-self: center;
+    justify-self: center;
+    background: url("/assets/available.9f632396.png");
+    background-size: cover;
+    width: var(--size);
+    height: var(--size);
+    outline: 2px solid transparent;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        right: 1px;
+        bottom: calc(0.05 * var(--size));
+        content: "off";
+        display: inline-block;
+        font-variant: small-caps;
+        line-height:0.8em;
+        font-size: calc(0.25 * var(--size));
+        white-space: wrap;
+        color: #a00;
+    }
+    &.automatic {
+        filter: invert();
+        &::before {
+            content: "on";
+        }
+    }
+    &.highlight {
+        outline: 2px solid var(--highlightcolor);
+    }
+    &.automatic.highlight {
+        outline-color: var(--highlightinvert); /*because of the invert*/
+    }
+}
+.duplicates.braidcard {
+    outline: 2px solid var(--duplicateColor);
+    box-shadow: 0px 0px 8px black inset;
+}
+
+.talon > .overlay {
+    opacity: 100%;
+    background-color: blue;
+    padding:1px;
+    padding-bottom:2px;
+    margin:0px;
+}
+
+.pile.hover {
+    outline: 4px solid yellow;
+    margin: 0px;
+}
+.card.dragging {
+    z-index: 3000 !important;
+    transition: top 0s, left 0s;
+}
+.pile.highlight {
+    outline: 4px solid var(--highlightcolor);
+    margin: 0px;
+}
+.pile.highlight .overlay {
+    background-color: rgba(128,0,255,0.1);
+}
+#dock .pile.highlight {
+    outline-color: var(--highlightcolor);
+}
+
+.pile.braid {
+    background: transparent;
+    outline: transparent;
+}
+/*
+#braid .card, #braid .pile {
+    width: 10.6vw;
+    height: 8vh;
+    position:relative;
+}
+*/
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Diphylleia,serif;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+.card.root {
+    background-color: antiquewhite;
+}
+.card.braidcard {
+    display: flex;
+    justify-content: center;
+    padding:2px;
+}
+.card.braidcard.aligntop {
+    /*align-items: start;*/
+}
+.card.braidcard.alignbottom {
+    /*align-items: end;*/
+}
+.braidbg,.targetbg {
+    width: 100%;
+    height: 100%;
+}
+#foundations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4,1fr);
+    column-gap: 1vh;
+    position: relative;
+    justify-items: center;
+    border-bottom: 3px solid white;
+    padding-block: 5px;
+}
+
+#directionbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#direction {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    margin: 0;
+    padding: 0;
+    opacity:0;
+    &.up,&.down {
+        opacity: 1;
+    }
+    &.down {
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+    }
+}
+#old-direction {
+    position: absolute;
+    left: calc(45% - 2px);
+    top: calc(45% - 1px);
+    width: 10%;
+    margin: 0px;
+    padding: 0px;
+    border: solid cyan;
+    border-width: 0px 16px 16px 0px;
+    border-style: solid;
+    transform: rotate(-45deg);
+    aspect-ratio: 1;
+    min-height: 0px;
+    opacity: 0;
+    transition: opacity 0.1s, transform 0.1s;
+    z-index: 3000;
+}
+#old-direction.up {
+    opacity: 0.5;
+    transform: rotate(-135deg);
+}
+#old-direction.down {
+    opacity: 0.5;
+    transform: rotate(45deg);
+}
+
+.foundation .overlay.done {
+    opacity: 50%;
+    background-color: gray;
+}
+#buttons {
+    display: flex;
+    margin-top: 5vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+#buttons button {
+    width: var(--btnsize);
+    height: var(--btnsize);
+    border-radius: 10px;
+    background-size: cover;
+    margin: 1vmin;
+    background-size: cover;
+}
+#buttons label span {
+    position:absolute;
+    bottom: 50%;
+    left: 0%;
+    text-align:center;
+    display: block;
+    width: 100%;
+    color: white;
+    display: none;
+}
+#buttons label {
+    position: relative;
+}
+/*#buttons button+label {
+    font-size: 3vmin;
+    position: relative;
+    left: -12%;
+    bottom: -50%;
+}*/
+#undo {background: url("/assets/undo.ef23d564.png");}
+#redo {background: url("/assets/redo.ae4d1286.png");}
+#undo.empty {
+    opacity: 0.5;
+}
+#redo.empty {
+    opacity: 0.5;
+}
+#help {background: url("/assets/help.fbda2e18.png");}
+#restart {background: url("/assets/restart.ecf3caa5.png");}
+#newgame {background: url("/assets/newgame.ebb58120.png");}
+#reverse {background: url("/assets/reverse.1e510fee.png");}
+
+#buttons .smallbutton {
+    width: calc(0.8 * var(--btnsize));
+    height: calc(0.8 * var(--btnsize));
+    margin: calc(0.1 * var(--btnsize));
+}
+    
+#win,#winn {
+    font-size: 40vw;
+    text-align: center;
+    position: absolute;
+    font-family: sans-serif;
+    width: 100%;
+    top: 0%;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.8;
+    display: none;
+}
+#win.win {
+    display: block;
+}
+#foundations .label {
+    left: -22%;
+    top: 45%;
+    width: auto;
+    transform: rotate(-90deg);
+}
+/*GENERAL========================================*/
+.card,.pile {
+    position: absolute;
+    width: var(--cardwidth);/*10vmin;*/
+    height: var(--cardheight); /*6.67vmin;*/
+    text-align: center;
+    user-select: none;
+    font-size: var(--cardfontsize); /*5.33vmin;*/
+    box-sizing: border-box;
+}
+.card {
+    background-color: white;
+    border: 1px solid black;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    transition: top 0.2s, left 0.2s;
+    pointer-events: none;
+}
+.pile {
+    outline: 1px solid white;
+    color: white;
+    background-color: rgba(255,255,255,0.1);
+}
+.card.braidcard {
+    transition: top 1s, left 1s;
+}
+#dock, #talonbox,#free,#foundations {
+    cursor: pointer;
+}
+#talonbox .card,
+#talonbox .pile,
+#free .card,
+#free .pile,
+#dock .pile,
+#foundations .card,
+#foundations .pile 
+{
+    margin: 0px;
+    position: relative;
+}
+
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.01);
+    color: rgba(255,255,255,0.5);
+    z-index: 2000; /*when facedown,put on top*/
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-family: sans-serif;
+    font-size: 3vmin;
+    overflow: clip;
+}
+
+
+
+
+/*RULES===================================*/
+#logo {
+    --size: max(calc(2*var(--cardheight)),
+                calc(2*var(--cardwidth))); /*min(200vmin,40vw)*/
+    width: var(--size);
+    bottom: 40vh;
+    font-size: 10vmin;
+    left: 1vw;
+    opacity: 0.5;
+    padding: 5px;
+    position: absolute;
+    aspect-ratio: 2;
+    z-index: 0;
+}
+body.reverse #logo {
+    left: 33vw;
+}
+
+#popup {
+    outline: 4px solid black;
+    position: fixed;
+    left: 30vw;
+    top: 10vh;
+    width: 40vw;
+    max-height: 80vh;
+    font-size: 3vmin;
+    opacity: 1;
+    z-index: 9999;
+    display: none;
+    padding: 3vmin;
+    margin: 0px;
+    overflow-y: scroll;
+}
+/*DIALOG BOX*/
+dialog {
+    display: none;
+    grid-template-areas: "M M" "Cancel OK";
+    background-color: antiquewhite;
+}
+dialog[open] {
+    display: grid;
+}
+body.reverse dialog {
+    grid-template-areas: "M M" "OK Cancel";
+}
+dialog div {
+    grid-area: M;
+    width: 100%;
+    text-align: center;
+}
+dialog button {
+    height: 2rem;
+    margin: 0.5rem;
+    width: 4rem;
+}
+dialog button#ok {
+    grid-area: OK;
+}
+dialog button#cancel {
+    grid-area: Cancel;
+}
+               
+.suit {
+    max-height: 5vmin;
+    max-width: 4vmin;
+    margin-left: 0.1em;
+    margin-top: 8px;
+}
+#popup {
+    color: black;
+    background-color: white;
+    text-align: left;
+    
+    
+    .safe {
+    margin: 0px;
+    font-size: 75%;
+    display: inline;
+    }
+    .continue {
+        text-align: center;
+        cursor: pointer;
+        margin: 5px;
+        font-weight: bold;
+    }
+    section#help-interface img {
+        height: 4ex;
+        vertical-align: top;
+        margin-inline: 0.1rem;
+    }
+    h2 {
+        margin: 0px;
+        text-align: center;
+    }
+    section {
+        dfn {font-weight: bold;}
+        ul, dl, dd {
+            margin: 2px;
+            padding: 0px;
+        }
+        dt {font-weight: bold;}
+    }
+    #help-highlighting img {
+        height: 8ex;
+    }
+}
