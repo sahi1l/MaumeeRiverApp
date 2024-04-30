@@ -1,4 +1,6 @@
 import autoBind from "./autobind.js";
+import {Prefs} from "./prefs.js";
+import {suitimages} from "./suits.js";
 let ranks = {
     default: -1, //output only
     braid: 1,
@@ -12,31 +14,6 @@ function DEBUG(text) {
 }
 let $root;
 
-let Prefs = new class {
-    constructor() {
-        this.left = false;
-        this.auto = false;
-        this.rules = true;
-        this.name = "maumee";
-        this.load();
-    }
-    load() {
-        let num;
-        num=Cookies.get(this.name);
-        if(num===undefined) {num=1;} else {num=Number(num);}
-        this.left = Boolean(num&4);
-        this.auto = Boolean(num&2);
-        this.rules = Boolean(num&1);
-    }
-    save() {
-        let code = (this.left<<2) + (this.auto<<1) + (this.rules<<0);
-        Cookies.set(this.name,code);
-    }
-    toggle(which) {
-        this[which] = !this[which];
-        this.save();
-    }
-}
 
 
 let automatic = false;
@@ -58,8 +35,9 @@ let suits = {"H":"&#9829;",//&hearts;",
              "C":"C",//&clubs;"
 };
 const getSuit = (suit,white=false)=>{
-    return `<img class="suit" src="assets/suits/${suit}${white?"W":""}.png">`;
-    return suits[suit];
+    return `<img class="suit" src="${suitimages[suit+(white?"W":"")]}">`;
+    //return `<img class="suit" src="assets/suits/${suit}${white?"W":""}.png">`;
+//    return suits[suit];
 //    return '<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">'+suits[suit]+"</svg>";
 }
 let colors = {"H": "red",
@@ -216,7 +194,7 @@ let selection = new class {
         this.clear();
         IsDone();
         e.preventDefault();
-        console.debug("dragend");
+        DEBUG("dragend");
         return "";
     }
     dragmove(e,buttondown) {
@@ -419,7 +397,8 @@ class Talon extends Pile {
         this.$count.html(this.stack.length);
         this.$flipcount.html(this.times);
         this.$overlay.toggleClass("empty",this.stack.length==0);
-        this.$overlay.css("background-image",`url(assets/img/cardback${Math.min(4,this.times)}.png)`);
+        this.$overlay.addClass("mode"+Math.min(4,this.times));
+//        this.$overlay.css("background-image",`url(assets/img/cardback${Math.min(4,this.times)}.png)`);
     }
     flip() {
         selection.unhighlight();
@@ -434,7 +413,7 @@ class Talon extends Pile {
         }
         this.$overlay.toggleClass("empty",this.empty());
         IsDone();
-        console.debug("flip");
+        DEBUG("flip");
         return true;
     }
     unflip() {
@@ -450,7 +429,7 @@ class Talon extends Pile {
         }
         this.$overlay.toggleClass("empty",this.empty());
         IsDone();
-        console.debug("unflip");
+        DEBUG("unflip");
         return true;
     }
 }
@@ -635,7 +614,7 @@ function GetAvailable() {//UI
     }
     if(movedFlag) {AutoPlay("always","wait");}
     else {IsDone();}
-    console.debug("GetAvailable");
+    DEBUG("GetAvailable");
 }
 class Discard extends DragOut {
     constructor($root) {
@@ -648,7 +627,7 @@ class Discard extends DragOut {
         this.$count.html(this.stack.length);
     }
     click(pile) {
-        console.debug("Discard>click");
+        DEBUG("Discard>click");
         if (!super.click(pile)) {
             for (let tgt of free) {
                 if (tgt.ok()) {
@@ -719,14 +698,14 @@ class Dock extends DragIn {
         if (this.stack.length==2) {
             this.braid.add(this.stack.shift());
         }
-        console.debug("Dock.callback")
+        DEBUG("Dock.callback")
     }
 }
 
 foundation.direction = 0;
 
 function MoveToFoundation(pile,card) {//UI
-    console.debug(">MoveToFoundation")
+    DEBUG(">MoveToFoundation")
     let move = false;
     if(card) {
         for(let key of foundation.keys) {
@@ -736,7 +715,7 @@ function MoveToFoundation(pile,card) {//UI
                 Undo.add(pile,target);
                 target.ok(card);
                 target.add(card);
-                console.debug("MoveToFoundation true");
+                DEBUG("MoveToFoundation true");
                 AutoPlay(false,true);
                 return true;
             }
@@ -947,7 +926,7 @@ let dialog = new class Dialog {
         this.$w[0].showModal();
     }
     ok() {
-        console.debug("ok");
+        DEBUG("ok");
         if(this.fn) {
             this.fn();
         }

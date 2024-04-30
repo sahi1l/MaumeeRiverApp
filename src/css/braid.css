@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Diphylleia";
-    src: local("Diphylleia"), url("../assets/Diphylleia-Regular.ttf");
+    src: local("Diphylleia"), url("../assets/Diphylleia-Regular-subset.ttf"); /*url("../assets/Diphylleia-Regular.ttf");*/
 }
 
 :root {--cardwidth: 12dvw;
@@ -133,6 +133,11 @@ body.reverse #talonbox {
     align-content: center;
     justify-content: center;
     z-index:2000;
+    &.mode1 {background: url("../assets/img/cardback1.png");}
+    &.mode2 {background: url("../assets/img/cardback2.png");}
+    &.mode3 {background: url("../assets/img/cardback3.png");}
+    &.mode4 {background: url("../assets/img/cardback4.png");}
+    
 }
 .talon > .overlay.empty {
     opacity: 0.1;
