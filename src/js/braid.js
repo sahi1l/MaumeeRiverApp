@@ -1,5 +1,6 @@
 import autoBind from "./autobind.js";
 import {Prefs} from "./prefs.js";
+import {suitimages} from "./suits.js";
 let ranks = {
     default: -1, //output only
     braid: 1,
@@ -34,7 +35,8 @@ let suits = {"H":"&#9829;",//&hearts;",
              "C":"C",//&clubs;"
 };
 const getSuit = (suit,white=false)=>{
-    return `<img class="suit" src="assets/suits/${suit}${white?"W":""}.png">`;
+    return `<img class="suit" src="${suitimages[suit+(white?"W":"")]}">`;
+    //return `<img class="suit" src="assets/suits/${suit}${white?"W":""}.png">`;
 //    return suits[suit];
 //    return '<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">'+suits[suit]+"</svg>";
 }
@@ -395,7 +397,8 @@ class Talon extends Pile {
         this.$count.html(this.stack.length);
         this.$flipcount.html(this.times);
         this.$overlay.toggleClass("empty",this.stack.length==0);
-        this.$overlay.css("background-image",`url(assets/img/cardback${Math.min(4,this.times)}.png)`);
+        this.$overlay.addClass("mode"+Math.min(4,this.times));
+//        this.$overlay.css("background-image",`url(assets/img/cardback${Math.min(4,this.times)}.png)`);
     }
     flip() {
         selection.unhighlight();

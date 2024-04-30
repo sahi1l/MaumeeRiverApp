@@ -1,11 +1,6 @@
 import {Preferences} from "@capacitor/preferences";
-/*Preferences.myget = async (key) => {
-    return await Preferences.get({key:key});
-}
-Preferences.myset= async (key,val) => {
-    await Preferences.set({key:key,value:val});
-    }*/
-
+//let Preferences = require("@capacitor/preferences");
+//import {Cookies} from "./js/js-cookie.js";
 export let Prefs = new class {
     constructor() {
         this.left = false;

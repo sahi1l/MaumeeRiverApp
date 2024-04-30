@@ -10,10 +10,11 @@
     "solitaire"
   ],
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "apk": "./makeapk.sh"
+      "start": "vite",
+      "build": "vite build",
+      "preview": "vite preview",
+      "apk": "./makeapk.sh",
+      "android": "npx cap run android"
   },
   "dependencies": {
     "@capacitor/android": "^6.0.0",
