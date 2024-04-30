@@ -8,7 +8,6 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 - **Easiest**: Visit the <A HREF="https://sahi1l.codeberg.page/maumee/">online version</A> on Codeberg.
 - Download `maumee.apk` above and sideload it to your Android device. (If you tweak the code, you can regenerate the APK by typing `npm run apk`.)
 - Download the code, and run the command `npm run preview`  (You will need to have NodeJS installed.)
-- Point a web browser at the folder `src/index.html`, which contains the complete HTML, javascript, and CSS code.
 
 ## Rules
 - Played with two standard 52-card decks.
