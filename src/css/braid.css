@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Diphylleia";
-    src: local("Diphylleia"), url("../assets/Diphylleia-Regular.ttf");
+    src: local("Diphylleia"), url("../assets/Diphylleia-Regular-subset.ttf"); /*url("../assets/Diphylleia-Regular.ttf");*/
 }
 
 :root {--cardwidth: 12dvw;

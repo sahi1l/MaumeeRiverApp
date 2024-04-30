@@ -5,15 +5,15 @@
   "main": "index.html",
   "keywords": [
     "capacitor",
-      "mobile",
-      "card game",
-      "solitaire"
+    "mobile",
+    "card game",
+    "solitaire"
   ],
   "scripts": {
-      "start": "vite",
-      "build": "vite build",
-      "preview": "vite preview",
-      "apk": "./makeapk.sh"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "apk": "./makeapk.sh"
   },
   "dependencies": {
     "@capacitor/android": "^6.0.0",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^6.0.0",
+    "glyphhanger": "^5.0.0",
     "vite": "^2.9.13"
   },
   "author": "Sam A. Hill",
