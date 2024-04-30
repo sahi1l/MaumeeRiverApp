@@ -118,7 +118,7 @@ body.reverse #canvas {
     margin-top: 5px;
 /*    margin-left: 6vw;*/
     gap: 5px;
-    
+    -webkit-tap-highlight-color: transparent; /*prevent distracting blue highlight*/
 }
 body.reverse #talonbox {
     left: 15px;
