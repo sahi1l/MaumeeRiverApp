@@ -8,7 +8,7 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 - **Easiest**: Visit the <A HREF="https://sahi1l.codeberg.page/maumee/">online version</A> on Codeberg.
 - Download `maumee.apk` above and sideload it to your Android device. (If you tweak the code, you can regenerate the APK by typing `npm run apk`.)
 - Download the code, and run the command `npm run preview`  (You will need to have NodeJS installed.)
-- Point a web browser at the folder `dist/index.html`, which contains the complete HTML, javascript, and CSS code.
+- Point a web browser at the folder `src/index.html`, which contains the complete HTML, javascript, and CSS code.
 
 ## Rules
 - Played with two standard 52-card decks.
@@ -20,8 +20,8 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
         
 ## Screenshots
 <table><tr>
-<td><img src="dist/assets/help/portrait.png">Game in left-handed portrait orientation.</td>
-<td><img src="dist/assets/help/landscape.png">Game in right-handed landscape orientation.  (The cards are horizontal to make it easier to grab them.)</td></td>
+<td><img src="src/assets/help/portrait.png">Game in left-handed portrait orientation.</td>
+<td><img src="src/assets/help/landscape.png">Game in right-handed landscape orientation.  (The cards are horizontal to make it easier to grab them.)</td></td>
 </tr>
 </table>
 
@@ -29,44 +29,44 @@ This code uses <A HREF="https://capacitorjs.com">CapacitorJS</A> to wrap a previ
 <table>
 <tr>
 <td><b>Autoplay</b>
-<img src="dist/assets/icons/available.png" alt="Autoplay"></td>
+<img src="src/assets/icons/available.png" alt="Autoplay"></td>
 <td>This button makes all safe moves to the foundation; other cards that could be moved to the foundation are highlighted, as is the button.  Double-clicking on the button makes this run automatically every time a card is drawn. (A card is *safe* to move if its duplicate isn't in the river or on the docks.)</td>
 </tr>
 <tr>
 <td><b>Undo/Redo</b>
-<img src="dist/assets/icons/undo.png" alt="Undo">
-<img src="dist/assets/icons/redo.png" alt="Redo">
+<img src="src/assets/icons/undo.png" alt="Undo">
+<img src="src/assets/icons/redo.png" alt="Redo">
 </td>
 <td>Unlimited undo and redo.</td>
 </tr>
 <tr>
 <td><b>Flip Layout</b>
-<img src="dist/assets/icons/reverse.png" alt="Flip layout"></td>
+<img src="src/assets/icons/reverse.png" alt="Flip layout"></td>
 <td>Switches between a left-handed and right-handed layout.  This setting is remembered from session to session via a cookie.</td>
 </tr>
 <tr>
 <td><b>Restart</b>
-<img src="dist/assets/icons/restart.png" alt="Restart"></td>
+<img src="src/assets/icons/restart.png" alt="Restart"></td>
 <td>Restart the current game.  This cannot be undone.</td>
 </tr>
 <tr>
 <td><b>New Game</b>
-<img src="dist/assets/icons/newgame.png" alt="New Game"></td>
+<img src="src/assets/icons/newgame.png" alt="New Game"></td>
 <td>Starts a new game.</td>
 </tr>
 </table>
 
 <table>
     <tr>
-      <td><img src="dist/assets/help/root.png"></td>
+      <td><img src="src/assets/help/root.png"></td>
       <td>All base cards are tinted a light brown.</td>
     </tr>
     <tr>
-      <td><img src="dist/assets/help/duplicate.png"></td>
+      <td><img src="src/assets/help/duplicate.png"></td>
       <td>Cards in the river or on the docks with a gold border have a duplicate in the river.</td>
     </tr>
     <tr>
-      <td><img src="dist/assets/help/highlighted.png"></td>
+      <td><img src="src/assets/help/highlighted.png"></td>
       <td>In autoplay mode, cards with a purple border <i>can</i> be played onto the foundations, but weren't played automatically because there might be a better move.</td>
     </tr>
   </table>
