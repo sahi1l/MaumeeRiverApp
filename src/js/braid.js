@@ -397,6 +397,9 @@ class Talon extends Pile {
         this.$count.html(this.stack.length);
         this.$flipcount.html(this.times);
         this.$overlay.toggleClass("empty",this.stack.length==0);
+        for(let i=1;i<=4;i++){
+            this.$overlay.removeClass("mode"+i);
+        }
         this.$overlay.addClass("mode"+Math.min(4,this.times));
 //        this.$overlay.css("background-image",`url(assets/img/cardback${Math.min(4,this.times)}.png)`);
     }
