@@ -961,6 +961,7 @@ function Reverse() {
     adjustPositions();
 }
 function init() {
+    console.debug("A");
     $root = $("#canvas");
     $(window).on("resize",IsDone);
     let Width = $root.width();
@@ -1031,7 +1032,7 @@ function init() {
     $("#popup").on("click",()=>{$("#popup").toggle();});
     if(Prefs.rules) {
         $("#popup").show();
-        Prefs.toggle("rules");
+//        Prefs.toggle("rules");
     }
     $("#available").toggleClass("automatic",Prefs.auto);
     AutoPlay(false,"wait");
@@ -1041,4 +1042,6 @@ function init() {
     
 }
 
-$(init)
+$(()=>{
+    Prefs.load().then(init);
+})
